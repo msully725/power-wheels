@@ -1,19 +1,40 @@
-void setup() {
-  Serial.begin(9600);
-}
-
 int accumulator = 0;
-int throttlePin = A0;
-int motorPWMPin = 9;
 float minThrottleVolt = 1.0;
 float maxThrottleVolt = 4.0;
-float currentThrottlePercent = 0.0;
 float minStartingThrottlePercent = 0.1;
+
+// shifter states
+int shiftStateLow = 0;
+int shiftStateHigh = 1;
+int shiftStateReverse = 2;
+
+// current states
+float currentThrottlePercent = 0.0;
+int currentShifterState = 0;
+
+// pin assignments
+int throttleInputPin = A0;
+
+int shifter1InputPin = 3;
+int shifter2InputPin = 4;
+
+int forwardLeftMotorPWMPin = 11;
+int forwardRightMotorPWMPin = 6;
+int reverseLeftMotorPWMPin = 10;
+int reverseRightMotorPWMPin = 5;
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(shifter1InputPin, INPUT_PULLUP);
+  pinMode(shifter2InputPin, INPUT_PULLUP);
+}
 
 void loop() {
   accumulator++;
 
   runThrottleReadIteration();
+  runShifterReadIteration();
   runMotorSignalIteration();
     
   delay(250);
@@ -27,7 +48,7 @@ void runThrottleReadIteration()
   String voltEnd = "V";
   String percentEnd = "%";
   String message = "";
-  float analogVoltageReading = analogIntToVolt(analogRead(throttlePin));
+  float analogVoltageReading = analogIntToVolt(analogRead(throttleInputPin));
   float throttlePercent = calculateThrottlePercent(analogVoltageReading);
 
   currentThrottlePercent = throttlePercent;
@@ -79,10 +100,25 @@ void runMotorSignalIteration()
     + intPwmEnding; 
   Serial.println(message);
   
-  analogWrite(motorPWMPin, throttledPwm);
+  analogWrite(forwardLeftMotorPWMPin, throttledPwm);
+  analogWrite(forwardRightMotorPWMPin, throttledPwm);
 }
 
 float analogIntToVolt(int analogIn)
 {
   return analogIn * (5.0 / 1023.0);
+}
+
+void runShifterReadIteration()
+{
+  int shifterPin1Value = digitalRead(shifter1InputPin);
+  int shifterPin2Value = digitalRead(shifter2InputPin);
+
+  String message = "";
+  message = "shifterPin1: " 
+    + shifterPin1 
+    + ", shifterPin2: "
+    + shifterPin2;
+
+  Serial.println(message); 
 }
