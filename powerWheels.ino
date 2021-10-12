@@ -15,7 +15,7 @@ int currentShifterState = 0;
 // pin assignments
 int throttleInputPin = A0;
 
-int shifter1InputPin = 3;
+int shifter1InputPin = 2;
 int shifter2InputPin = 4;
 
 int forwardLeftMotorPWMPin = 11;
@@ -114,11 +114,10 @@ void runShifterReadIteration()
   int shifterPin1Value = digitalRead(shifter1InputPin);
   int shifterPin2Value = digitalRead(shifter2InputPin);
 
-  String message = "";
-  message = "shifterPin1: " 
-    + shifterPin1 
-    + ", shifterPin2: "
-    + shifterPin2;
+  String message = "shifterPin1: ";
+  message += shifterPin1Value; 
+  message += ", shifterPin2: ";
+  message += shifterPin2Value;
 
   Serial.println(message); 
 }
