@@ -102,6 +102,8 @@ void runMotorSignalIteration()
   
   analogWrite(forwardLeftMotorPWMPin, throttledPwm);
   analogWrite(forwardRightMotorPWMPin, throttledPwm);
+  analogWrite(reverseLeftMotorPWMPin, 0);
+  analogWrite(reverseRightMotorPWMPin, 0);
 }
 
 float analogIntToVolt(int analogIn)
