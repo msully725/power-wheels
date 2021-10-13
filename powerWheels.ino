@@ -4,9 +4,9 @@ float maxThrottleVolt = 4.0;
 float minStartingThrottlePercent = 0.1;
 
 // shifter states
-int shiftStateLow = 0;
-int shiftStateHigh = 1;
-int shiftStateReverse = 2;
+const int ShiftStateHigh = 0;
+const int ShiftStateLow = 1;
+const int ShiftStateReverse = 2;
 
 // current states
 float currentThrottlePercent = 0.0;
@@ -86,6 +86,7 @@ void runMotorSignalIteration()
   
   int maxPwm = 255;
   int throttledPwm = maxPwm * adjustedCurrentThrottlePercent;
+
   String beginning = "Sending ";
   float percentPwm = throttledPwm / 255.0 * 100.0;
   String percentEnding = "% PWM";
@@ -116,10 +117,23 @@ void runShifterReadIteration()
   int shifterPin1Value = digitalRead(shifter1InputPin);
   int shifterPin2Value = digitalRead(shifter2InputPin);
 
-  String message = "shifterPin1: ";
-  message += shifterPin1Value; 
-  message += ", shifterPin2: ";
-  message += shifterPin2Value;
+  currentShifterState = shifterPin1Value + shifterPin2Value;
+
+  String message = "currentShifterState: " + currentShifterState;
+  message += ", "; 
+
+  switch(currentShifterState)
+  {
+    case ShiftStateReverse:
+      message += "reverse";
+      break;
+    case ShiftStateLow:
+      message += "low";
+      break;
+    case ShiftStateHigh:
+      message += "high";
+      break;
+  }
 
   Serial.println(message); 
 }
