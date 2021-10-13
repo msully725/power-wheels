@@ -1,4 +1,4 @@
-<circuit Simu_Step_nS="1000" type="simulide_0.4" Speed_sps="1000000" animate="0" Speed_per="100" noLinAcc="5" reactStep="50">
+<circuit Simu_Step_nS="1000" type="simulide_0.4" Speed_sps="500000" animate="0" Speed_per="50" noLinAcc="5" reactStep="50">
 
 Unique  Id: L293-826: 
 Circuit Id: L293-826
@@ -7,10 +7,6 @@ Circuit Id: L293-826
 Unique  Id: L293-762: 
 Circuit Id: L293-762
 <item valLabelx="13" valLabRot="-90" boardPos="-1e+06,-1e+06" y="12" valLabely="36" Show_id="true" circPos="0,0" labely="-20" itemtype="Subcircuit" BoardId="" circRot="0" Logic_Symbol="true" mainComp="false" Name="L293" objectName="L293-762" hflip="1" id="L293-762" labelx="0" boardRot="-1000000" rotation="0" x="-308" vflip="1" labelrot="0"/>
-
-Unique  Id: Probe-596: 
-Circuit Id: Probe-596
-<item valLabelx="16" valLabRot="45" boardPos="-1e+06,-1e+06" y="-112" Show_volt="true" valLabely="0" Show_id="false" circPos="0,0" labely="-16" itemtype="Probe" circRot="-5.4861292803319049e+303" mainComp="false" objectName="Probe-596" hflip="1" Threshold="2.5" id="Probe-596" labelx="16" boardRot="-1000000" rotation="-45" x="-216" vflip="1" labelrot="45"/>
 
 Unique  Id: DcMotor-220: 
 Circuit Id: DcMotor-140
@@ -43,10 +39,6 @@ Circuit Id: Shifter Toggle 2
 Unique  Id: Node-419: 
 Circuit Id: Node-419
 <item valLabelx="0" valLabRot="0" boardPos="-1e+06,-1e+06" y="-40" valLabely="0" Show_id="false" circPos="0,0" labely="-24" itemtype="Node" circRot="nan" mainComp="false" objectName="Node-419" hflip="1" id="Node-419" labelx="-16" boardRot="-1000000" rotation="0" x="-632" vflip="1" labelrot="0"/>
-
-Unique  Id: Probe-897: 
-Circuit Id: Probe-897
-<item valLabelx="16" valLabRot="45" boardPos="-1e+06,-1e+06" y="-40" Show_volt="true" valLabely="0" Show_id="false" circPos="0,0" labely="-16" itemtype="Probe" circRot="-8" mainComp="false" objectName="Probe-897" hflip="1" Threshold="2.5" id="Probe-897" labelx="16" boardRot="-1000000" rotation="-45" x="-348" vflip="1" labelrot="45"/>
 
 Unique  Id: SerialTerm-14: 
 Circuit Id: SerialTerm-14

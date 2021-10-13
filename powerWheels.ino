@@ -1,4 +1,3 @@
-int accumulator = 0;
 float minThrottleVolt = 1.0;
 float maxThrottleVolt = 4.0;
 float minStartingThrottlePercent = 0.1;
@@ -31,13 +30,11 @@ void setup() {
 }
 
 void loop() {
-  accumulator++;
-
   runThrottleReadIteration();
   runShifterReadIteration();
   runMotorSignalIteration();
     
-  delay(250);
+  delay(25);
 }
 
 void runThrottleReadIteration() 
@@ -47,8 +44,7 @@ void runThrottleReadIteration()
 
   currentThrottlePercent = throttlePercent;
   
-  String message = "Analog In 0 Reading #";
-  message += accumulator + ": ";
+  String message = "Analog In 0 Reading ";
   message += analogVoltageReading;
   message += "V, ";
   message += throttlePercent;
