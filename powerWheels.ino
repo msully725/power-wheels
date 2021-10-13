@@ -19,9 +19,9 @@ int shifter1InputPin = 2;
 int shifter2InputPin = 4;
 
 int forwardLeftMotorPWMPin = 11;
-int forwardRightMotorPWMPin = 6;
+int forwardRightMotorPWMPin = 9;
 int reverseLeftMotorPWMPin = 10;
-int reverseRightMotorPWMPin = 5;
+int reverseRightMotorPWMPin = 3;
 
 void setup() {
   Serial.begin(9600);

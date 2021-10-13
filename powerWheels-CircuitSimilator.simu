@@ -1,115 +1,167 @@
-<circuit Speed_per="50" noLinAcc="14" Simu_Step_nS="1000" animate="1" Speed_sps="500000" reactStep="1" type="simulide_0.4">
+<circuit Speed_sps="1000000" Speed_per="100" Simu_Step_nS="1000" type="simulide_0.4" reactStep="1" animate="1" noLinAcc="14">
 
-Unique  Id: Node-419: 
-Circuit Id: Node-419
-<item valLabelx="0" hflip="1" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="nan" y="-40" labelx="-16" mainComp="false" labelrot="0" valLabRot="0" x="-632" id="Node-419" objectName="Node-419" circPos="0,0" itemtype="Node" valLabely="0" vflip="1"/>
+Unique  Id: Node-923: 
+Circuit Id: Node-923
+<item itemtype="Node" objectName="Node-923" Show_id="false" valLabely="0" circPos="0,0" boardRot="-1000000" vflip="1" id="Node-923" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-380" labely="-24" labelrot="0" circRot="-3.7488528340275786e+304" y="116" labelx="-16" valLabelx="0" boardPos="-1e+06,-1e+06"/>
 
-Unique  Id: Switch-408: 
-Circuit Id: Shifter Toggle 2
-<item valLabelx="0" hflip="1" rotation="0" Show_id="true" boardRot="-1000000" Norm_Close="false" DT="false" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="12" Poles="1" labelx="-16" mainComp="false" labelrot="0" valLabRot="0" x="-576" Key="" id="Shifter Toggle 2" objectName="Switch-408" circPos="0,0" itemtype="Switch" valLabely="0" vflip="1"/>
+Unique  Id: Node-920: 
+Circuit Id: Node-920
+<item itemtype="Node" objectName="Node-920" Show_id="false" valLabely="0" circPos="0,0" boardRot="-1000000" vflip="1" id="Node-920" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-436" labely="-24" labelrot="0" circRot="-3.7262632560862337e+304" y="124" labelx="-16" valLabelx="0" boardPos="-1e+06,-1e+06"/>
 
-Unique  Id: Switch-403: 
-Circuit Id: Shifter Toggle 1
-<item valLabelx="0" hflip="1" rotation="0" Show_id="true" boardRot="-1000000" Norm_Close="false" DT="false" boardPos="-1e+06,-1e+06" labely="-24" circRot="7.5660388151597048e-307" y="-40" Poles="1" labelx="-16" mainComp="false" labelrot="0" valLabRot="0" x="-576" Key="" id="Shifter Toggle 1" objectName="Switch-403" circPos="0,0" itemtype="Switch" valLabely="0" vflip="1"/>
+Unique  Id: Node-911: 
+Circuit Id: Node-911
+<item itemtype="Node" objectName="Node-911" Show_id="false" valLabely="0" circPos="0,0" boardRot="-1000000" vflip="1" id="Node-911" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-364" labely="-24" labelrot="0" circRot="-5.4861292803319049e+303" y="20" labelx="-16" valLabelx="0" boardPos="-1e+06,-1e+06"/>
 
-Unique  Id: Node-401: 
-Circuit Id: Node-401
-<item valLabelx="0" hflip="1" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="-5.4861292803319049e+303" y="156" labelx="-16" mainComp="false" labelrot="0" valLabRot="0" x="-340" id="Node-401" objectName="Node-401" circPos="0,0" itemtype="Node" valLabely="0" vflip="1"/>
+Unique  Id: Node-908: 
+Circuit Id: Node-908
+<item itemtype="Node" objectName="Node-908" Show_id="false" valLabely="0" circPos="0,0" boardRot="-1000000" vflip="1" id="Node-908" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-372" labely="-24" labelrot="0" circRot="1.358077306207893e-312" y="28" labelx="-16" valLabelx="0" boardPos="-1e+06,-1e+06"/>
 
-Unique  Id: Arduino Uno-1: 
-Circuit Id: Arduino Uno-1
-<item valLabelx="0" hflip="1" rotation="-90" Mhz="16" Show_id="true" boardRot="-1000000" eeprom="255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255" Logic_Symbol="false" boardPos="-1e+06,-1e+06" Program="powerWheels.ino.standard.hex" labely="-21" circRot="0" y="-344" labelx="100" mainComp="false" varList=",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,," labelrot="0" valLabRot="0" x="-444" Init_gdb="false" id="Arduino Uno-1" objectName="Arduino Uno-1" circPos="0,0" Name="arduinoUno" itemtype="Arduino" valLabely="0" Auto_Load="false" vflip="1"/>
-
-Unique  Id: Voltage Source-12: 
-Circuit Id: Voltage Source-12
-<item valLabelx="-26" hflip="1" rotation="0" Unit=" V" Show_id="false" boardRot="-1000000" Show_Volt="true" boardPos="-1e+06,-1e+06" labely="-80" circRot="8.0635840056680348e-313" y="-128" Voltage="4.0999999999999996" labelx="-40" mainComp="false" labelrot="0" valLabRot="0" x="-556" id="Voltage Source-12" objectName="Voltage Source-12" circPos="0,0" itemtype="Voltage Source" valLabely="10" vflip="1"/>
-
-Unique  Id: DcMotor-140: 
-Circuit Id: DcMotor-140
-<item Resistance="100" valLabelx="0" hflip="1" rotation="0" Unit=" Ω" Show_id="true" boardRot="-1000000" Volt_Nominal="5" boardPos="-1e+06,-1e+06" labely="-48" circRot="-5.4861292803319049e+303" y="-12" labelx="-22" mainComp="false" labelrot="0" valLabRot="0" x="-160" id="DcMotor-140" objectName="DcMotor-140" circPos="0,0" itemtype="DcMotor" RPM_Nominal="100" valLabely="0" vflip="1"/>
-
-Unique  Id: DcMotor-220: 
-Circuit Id: DcMotor-140
-<item Resistance="100" valLabelx="0" hflip="1" rotation="0" Unit=" Ω" Show_id="true" boardRot="-1000000" Volt_Nominal="5" boardPos="-1e+06,-1e+06" labely="-48" circRot="-5.4861292803319049e+303" y="84" labelx="-22" mainComp="false" labelrot="0" valLabRot="0" x="-156" id="DcMotor-140" objectName="DcMotor-220" circPos="0,0" itemtype="DcMotor" RPM_Nominal="60" valLabely="0" vflip="1"/>
-
-Unique  Id: L293-762: 
-Circuit Id: L293-762
-<item valLabelx="13" hflip="1" rotation="0" Show_id="true" boardRot="-1000000" Logic_Symbol="true" boardPos="-1e+06,-1e+06" labely="-20" circRot="0" y="12" labelx="0" mainComp="false" labelrot="0" BoardId="" valLabRot="-90" x="-308" id="L293-762" objectName="L293-762" circPos="0,0" Name="L293" itemtype="Subcircuit" valLabely="36" vflip="1"/>
+Unique  Id: Oscope-901: 
+Circuit Id: Oscope-901
+<item VolDiv="1,1,1,1" itemtype="Oscope" objectName="Oscope-901" Trigger="4" Show_id="false" valLabely="0" circPos="0,0" hTick="1000000" boardRot="-1000000" vflip="1" Tracks="1" id="Oscope-901" HideCh="false,false,false,false" TimPos="0,0,0,0" valLabRot="0" rotation="0" hflip="1" mainComp="false" Filter="0" Basic_Y="135" x="-508" labely="-100" labelrot="0" VolPos="0,0,0,0" AutoSC="4" circRot="4.2439915878593324e-314" y="220" labelx="-90" valLabelx="0" Tunnels=",,," boardPos="-1e+06,-1e+06" Basic_X="135"/>
 
 Unique  Id: L293-826: 
 Circuit Id: L293-826
-<item valLabelx="13" hflip="1" rotation="0" Show_id="true" boardRot="-1000000" Logic_Symbol="true" boardPos="-1e+06,-1e+06" labely="-20" circRot="nan" y="108" labelx="0" mainComp="false" labelrot="0" BoardId="" valLabRot="-90" x="-308" id="L293-826" objectName="L293-826" circPos="0,0" Name="L293" itemtype="Subcircuit" valLabely="36" vflip="1"/>
+<item itemtype="Subcircuit" objectName="L293-826" Show_id="true" valLabely="36" circPos="0,0" boardRot="-1000000" vflip="1" Name="L293" id="L293-826" Logic_Symbol="true" valLabRot="-90" rotation="0" hflip="1" mainComp="false" BoardId="" x="-308" labely="-20" labelrot="0" circRot="nan" y="108" labelx="0" valLabelx="13" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: L293-762: 
+Circuit Id: L293-762
+<item itemtype="Subcircuit" objectName="L293-762" Show_id="true" valLabely="36" circPos="0,0" boardRot="-1000000" vflip="1" Name="L293" id="L293-762" Logic_Symbol="true" valLabRot="-90" rotation="0" hflip="1" mainComp="false" BoardId="" x="-308" labely="-20" labelrot="0" circRot="0" y="12" labelx="0" valLabelx="13" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: DcMotor-220: 
+Circuit Id: DcMotor-140
+<item itemtype="DcMotor" objectName="DcMotor-220" Unit=" Ω" Show_id="true" valLabely="0" circPos="0,0" boardRot="-1000000" vflip="1" id="DcMotor-140" Resistance="100" valLabRot="0" rotation="0" hflip="1" mainComp="false" RPM_Nominal="60" x="-156" labely="-48" labelrot="0" circRot="-5.4861292803319049e+303" y="84" labelx="-22" valLabelx="0" boardPos="-1e+06,-1e+06" Volt_Nominal="5"/>
+
+Unique  Id: DcMotor-140: 
+Circuit Id: DcMotor-140
+<item itemtype="DcMotor" objectName="DcMotor-140" Unit=" Ω" Show_id="true" valLabely="0" circPos="0,0" boardRot="-1000000" vflip="1" id="DcMotor-140" Resistance="100" valLabRot="0" rotation="0" hflip="1" mainComp="false" RPM_Nominal="100" x="-160" labely="-48" labelrot="0" circRot="-5.4861292803319049e+303" y="-12" labelx="-22" valLabelx="0" boardPos="-1e+06,-1e+06" Volt_Nominal="5"/>
+
+Unique  Id: Voltage Source-12: 
+Circuit Id: Voltage Source-12
+<item itemtype="Voltage Source" objectName="Voltage Source-12" Unit=" V" Show_id="false" valLabely="10" circPos="0,0" boardRot="-1000000" vflip="1" id="Voltage Source-12" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-556" labely="-80" labelrot="0" Voltage="4.0999999999999996" circRot="8.0635840056680348e-313" y="-128" labelx="-40" Show_Volt="true" valLabelx="-26" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Arduino Uno-1: 
+Circuit Id: Arduino Uno-1
+<item Program="powerWheels.ino.standard.hex" itemtype="Arduino" objectName="Arduino Uno-1" Show_id="true" valLabely="0" circPos="0,0" boardRot="-1000000" vflip="1" Name="arduinoUno" id="Arduino Uno-1" Logic_Symbol="false" valLabRot="0" rotation="-90" hflip="1" mainComp="false" Auto_Load="false" Init_gdb="false" x="-444" labely="-21" labelrot="0" Mhz="16" circRot="0" y="-344" eeprom="255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255" labelx="100" valLabelx="0" boardPos="-1e+06,-1e+06" varList=",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,"/>
+
+Unique  Id: Node-401: 
+Circuit Id: Node-401
+<item itemtype="Node" objectName="Node-401" Show_id="false" valLabely="0" circPos="0,0" boardRot="-1000000" vflip="1" id="Node-401" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-340" labely="-24" labelrot="0" circRot="-5.4861292803319049e+303" y="156" labelx="-16" valLabelx="0" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Switch-403: 
+Circuit Id: Shifter Toggle 1
+<item itemtype="Switch" objectName="Switch-403" Show_id="true" valLabely="0" circPos="0,0" DT="false" boardRot="-1000000" vflip="1" Norm_Close="false" id="Shifter Toggle 1" Poles="1" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-576" labely="-24" Key="" labelrot="0" circRot="7.5660388151597048e-307" y="-40" labelx="-16" valLabelx="0" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Switch-408: 
+Circuit Id: Shifter Toggle 2
+<item itemtype="Switch" objectName="Switch-408" Show_id="true" valLabely="0" circPos="0,0" DT="false" boardRot="-1000000" vflip="1" Norm_Close="false" id="Shifter Toggle 2" Poles="1" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-576" labely="-24" Key="" labelrot="0" circRot="0" y="12" labelx="-16" valLabelx="0" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Node-419: 
+Circuit Id: Node-419
+<item itemtype="Node" objectName="Node-419" Show_id="false" valLabely="0" circPos="0,0" boardRot="-1000000" vflip="1" id="Node-419" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-632" labely="-24" labelrot="0" circRot="nan" y="-40" labelx="-16" valLabelx="0" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: SerialTerm-14: 
 Circuit Id: SerialTerm-14
-<item sizex="839" valLabelx="0" hflip="1" rotation="0" sizey="537" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" posx="1334" labely="-24" circRot="0" y="-344" posy="393" labelx="-16" mainComp="false" labelrot="0" valLabRot="0" x="-444" id="SerialTerm-14" objectName="SerialTerm-14" Mcu_Id="Arduino Uno-1" circPos="0,0" itemtype="SerialTerm" valLabely="0" vflip="1" Mcu_Uart="1"/>
+<item posy="393" itemtype="SerialTerm" objectName="SerialTerm-14" Show_id="false" sizex="839" valLabely="0" circPos="0,0" Mcu_Id="Arduino Uno-1" boardRot="-1000000" vflip="1" id="SerialTerm-14" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-444" labely="-24" posx="1334" sizey="537" labelrot="0" circRot="0" y="-344" labelx="-16" valLabelx="0" Mcu_Uart="1" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-413: 
 Circuit Id: Connector-413
-<item valLabelx="0" hflip="1" startpinid="Arduino Uno-1-PD4" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="-160" pointList="-428,-160,-428,12,-560,12" labelx="-16" mainComp="false" labelrot="0" endpinid="Switch-408-switch0pinN" valLabRot="0" x="-428" id="Connector-413" objectName="Connector-413" circPos="0,0" enodeid="Circ_eNode-875" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-413" Show_id="false" valLabely="0" circPos="0,0" endpinid="Switch-408-switch0pinN" boardRot="-1000000" vflip="1" id="Connector-413" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-428" labely="-24" pointList="-428,-160,-428,12,-560,12" labelrot="0" startpinid="Arduino Uno-1-PD4" circRot="0" y="-160" labelx="-16" valLabelx="0" enodeid="Circ_eNode-827" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-417: 
 Circuit Id: Connector-417
-<item valLabelx="0" hflip="1" startpinid="Arduino Uno-1-PD2" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="-160" pointList="-444,-160,-444,-40,-560,-40" labelx="-16" mainComp="false" labelrot="0" endpinid="Switch-403-switch0pinN" valLabRot="0" x="-444" id="Connector-417" objectName="Connector-417" circPos="0,0" enodeid="Circ_eNode-876" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-417" Show_id="false" valLabely="0" circPos="0,0" endpinid="Switch-403-switch0pinN" boardRot="-1000000" vflip="1" id="Connector-417" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-444" labely="-24" pointList="-444,-160,-444,-40,-560,-40" labelrot="0" startpinid="Arduino Uno-1-PD2" circRot="0" y="-160" labelx="-16" valLabelx="0" enodeid="Circ_eNode-828" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-418: 
 Circuit Id: Connector-418
-<item valLabelx="0" hflip="1" startpinid="Switch-403-pinP0" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="-40" pointList="-592,-40,-632,-40" labelx="-16" mainComp="false" labelrot="0" endpinid="Node-419-1" valLabRot="0" x="-592" id="Connector-418" objectName="Connector-418" circPos="0,0" enodeid="Circ_eNode-877" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-418" Show_id="false" valLabely="0" circPos="0,0" endpinid="Node-419-1" boardRot="-1000000" vflip="1" id="Connector-418" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-592" labely="-24" pointList="-592,-40,-632,-40" labelrot="0" startpinid="Switch-403-pinP0" circRot="0" y="-40" labelx="-16" valLabelx="0" enodeid="Circ_eNode-829" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-420: 
 Circuit Id: Connector-420
-<item valLabelx="0" hflip="1" startpinid="Node-419-2" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="-40" pointList="-632,-40,-632,12,-592,12" labelx="-16" mainComp="false" labelrot="0" endpinid="Switch-408-pinP0" valLabRot="0" x="-632" id="Connector-420" objectName="Connector-420" circPos="0,0" enodeid="Circ_eNode-877" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-420" Show_id="false" valLabely="0" circPos="0,0" endpinid="Switch-408-pinP0" boardRot="-1000000" vflip="1" id="Connector-420" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-632" labely="-24" pointList="-632,-40,-632,12,-592,12" labelrot="0" startpinid="Node-419-2" circRot="0" y="-40" labelx="-16" valLabelx="0" enodeid="Circ_eNode-829" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-430: 
 Circuit Id: Connector-430
-<item valLabelx="0" hflip="1" startpinid="Voltage Source-12-outPin" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="-128" pointList="-540,-128,-504,-128,-504,-336,-420,-336,-420,-304" labelx="-16" mainComp="false" labelrot="0" endpinid="Arduino Uno-1-PC0" valLabRot="0" x="-540" id="Connector-430" objectName="Connector-430" circPos="0,0" enodeid="Circ_eNode-878" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-430" Show_id="false" valLabely="0" circPos="0,0" endpinid="Arduino Uno-1-PC0" boardRot="-1000000" vflip="1" id="Connector-430" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-540" labely="-24" pointList="-540,-128,-504,-128,-504,-336,-420,-336,-420,-304" labelrot="0" startpinid="Voltage Source-12-outPin" circRot="0" y="-128" labelx="-16" valLabelx="0" enodeid="Circ_eNode-830" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-822: 
 Circuit Id: Connector-822
-<item valLabelx="0" hflip="1" startpinid="L293-762-2Y" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="28" pointList="-268,28,-120,28,-120,-12" labelx="-16" mainComp="false" labelrot="0" endpinid="DcMotor-140-rPin" valLabRot="0" x="-268" id="Connector-822" objectName="Connector-822" circPos="0,0" enodeid="Circ_eNode-879" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-822" Show_id="false" valLabely="0" circPos="0,0" endpinid="DcMotor-140-rPin" boardRot="-1000000" vflip="1" id="Connector-822" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-268" labely="-24" pointList="-268,28,-120,28,-120,-12" labelrot="0" startpinid="L293-762-2Y" circRot="0" y="28" labelx="-16" valLabelx="0" enodeid="Circ_eNode-831" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-813: 
 Circuit Id: Connector-813
-<item valLabelx="0" hflip="1" startpinid="L293-762-1A" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="20" pointList="-316,20,-364,20,-364,-160" labelx="-16" mainComp="false" labelrot="0" endpinid="Arduino Uno-1-PB3" valLabRot="0" x="-316" id="Connector-813" objectName="Connector-813" circPos="0,0" enodeid="Circ_eNode-880" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-813" Show_id="false" valLabely="0" circPos="0,0" endpinid="Node-911-0" boardRot="-1000000" vflip="1" id="Connector-813" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-316" labely="-24" pointList="-316,20,-364,20" labelrot="0" startpinid="L293-762-1A" circRot="0" y="20" labelx="-16" valLabelx="0" enodeid="enode-913" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-402: 
 Circuit Id: Connector-402
-<item valLabelx="0" hflip="1" startpinid="Node-401-2" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="156" pointList="-340,156,-340,36,-316,36" labelx="-16" mainComp="false" labelrot="0" endpinid="L293-762-12EN" valLabRot="0" x="-340" id="Connector-402" objectName="Connector-402" circPos="0,0" enodeid="Circ_eNode-881" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-402" Show_id="false" valLabely="0" circPos="0,0" endpinid="L293-762-12EN" boardRot="-1000000" vflip="1" id="Connector-402" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-340" labely="-24" pointList="-340,156,-340,36,-316,36" labelrot="0" startpinid="Node-401-2" circRot="0" y="156" labelx="-16" valLabelx="0" enodeid="Circ_eNode-833" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-595: 
 Circuit Id: Connector-595
-<item valLabelx="0" hflip="1" startpinid="Arduino Uno-1-PB2" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="-160" pointList="-372,-160,-372,28,-316,28" labelx="-16" mainComp="false" labelrot="0" endpinid="L293-762-2A" valLabRot="0" x="-372" id="Connector-595" objectName="Connector-595" circPos="0,0" enodeid="Circ_eNode-882" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-595" Show_id="false" valLabely="0" circPos="0,0" endpinid="Node-908-0" boardRot="-1000000" vflip="1" id="Connector-595" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-372" labely="-24" pointList="-372,-160,-372,28" labelrot="0" startpinid="Arduino Uno-1-PB2" circRot="0" y="-160" labelx="-16" valLabelx="0" enodeid="enode-910" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-219: 
 Circuit Id: Connector-219
-<item valLabelx="0" hflip="1" startpinid="Arduino Uno-1-GND0" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="-160" pointList="-340,-160,-340,-84,-632,-84,-632,-40" labelx="-16" mainComp="false" labelrot="0" endpinid="Node-419-0" valLabRot="0" x="-340" id="Connector-219" objectName="Connector-219" circPos="0,0" enodeid="Circ_eNode-877" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-219" Show_id="false" valLabely="0" circPos="0,0" endpinid="Node-419-0" boardRot="-1000000" vflip="1" id="Connector-219" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-340" labely="-24" pointList="-340,-160,-340,-84,-632,-84,-632,-40" labelrot="0" startpinid="Arduino Uno-1-GND0" circRot="0" y="-160" labelx="-16" valLabelx="0" enodeid="Circ_eNode-829" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-883: 
 Circuit Id: Connector-883
-<item valLabelx="0" hflip="1" startpinid="L293-826-1Y" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="116" pointList="-268,116,-196,116,-196,84" labelx="-16" mainComp="false" labelrot="0" endpinid="DcMotor-220-lPin" valLabRot="0" x="-268" id="Connector-883" objectName="Connector-883" circPos="0,0" enodeid="Circ_eNode-884" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-883" Show_id="false" valLabely="0" circPos="0,0" endpinid="DcMotor-220-lPin" boardRot="-1000000" vflip="1" id="Connector-883" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-268" labely="-24" pointList="-268,116,-196,116,-196,84" labelrot="0" startpinid="L293-826-1Y" circRot="0" y="116" labelx="-16" valLabelx="0" enodeid="Circ_eNode-884" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-389: 
 Circuit Id: Connector-389
-<item valLabelx="0" hflip="1" startpinid="Arduino Uno-1-V5V" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="-304" pointList="-380,-304,-380,-340,-32,-340,-32,196,-340,196,-340,156" labelx="-16" mainComp="false" labelrot="0" endpinid="Node-401-0" valLabRot="0" x="-380" id="Connector-389" objectName="Connector-389" circPos="0,0" enodeid="Circ_eNode-881" itemtype="Connector" valLabely="0" vflip="1"/>
-
-Unique  Id: Connector-388: 
-Circuit Id: Connector-388
-<item valLabelx="0" hflip="1" startpinid="Arduino Uno-1-PD6" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="1.1857575500189917e-322" y="-160" pointList="-412,-160,-412,116,-316,116" labelx="-16" mainComp="false" labelrot="0" endpinid="L293-826-1A" valLabRot="0" x="-412" id="Connector-388" objectName="Connector-388" circPos="0,0" enodeid="Circ_eNode-885" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-389" Show_id="false" valLabely="0" circPos="0,0" endpinid="Node-401-0" boardRot="-1000000" vflip="1" id="Connector-389" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-380" labely="-24" pointList="-380,-304,-380,-340,-32,-340,-32,196,-340,196,-340,156" labelrot="0" startpinid="Arduino Uno-1-V5V" circRot="0" y="-304" labelx="-16" valLabelx="0" enodeid="Circ_eNode-833" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-880: 
 Circuit Id: Connector-880
-<item valLabelx="0" hflip="1" startpinid="L293-826-12EN" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="132" pointList="-316,132,-340,132,-340,156" labelx="-16" mainComp="false" labelrot="0" endpinid="Node-401-1" valLabRot="0" x="-316" id="Connector-880" objectName="Connector-880" circPos="0,0" enodeid="Circ_eNode-881" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-880" Show_id="false" valLabely="0" circPos="0,0" endpinid="Node-401-1" boardRot="-1000000" vflip="1" id="Connector-880" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-316" labely="-24" pointList="-316,132,-340,132,-340,156" labelrot="0" startpinid="L293-826-12EN" circRot="0" y="132" labelx="-16" valLabelx="0" enodeid="Circ_eNode-833" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-894: 
 Circuit Id: Connector-894
-<item valLabelx="0" hflip="1" startpinid="L293-826-2Y" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="124" pointList="-268,124,-116,124,-116,84" labelx="-16" mainComp="false" labelrot="0" endpinid="DcMotor-220-rPin" valLabRot="0" x="-268" id="Connector-894" objectName="Connector-894" circPos="0,0" enodeid="Circ_eNode-895" itemtype="Connector" valLabely="0" vflip="1"/>
-
-Unique  Id: Connector-895: 
-Circuit Id: Connector-895
-<item valLabelx="0" hflip="1" startpinid="Arduino Uno-1-PD5" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="-160" pointList="-420,-160,-420,124,-316,124" labelx="-16" mainComp="false" labelrot="0" endpinid="L293-826-2A" valLabRot="0" x="-420" id="Connector-895" objectName="Connector-895" circPos="0,0" enodeid="Circ_eNode-896" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-894" Show_id="false" valLabely="0" circPos="0,0" endpinid="DcMotor-220-rPin" boardRot="-1000000" vflip="1" id="Connector-894" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-268" labely="-24" pointList="-268,124,-116,124,-116,84" labelrot="0" startpinid="L293-826-2Y" circRot="0" y="124" labelx="-16" valLabelx="0" enodeid="Circ_eNode-895" boardPos="-1e+06,-1e+06"/>
 
 Unique  Id: Connector-819: 
 Circuit Id: Connector-819
-<item valLabelx="0" hflip="1" startpinid="L293-762-1Y" rotation="0" Show_id="false" boardRot="-1000000" boardPos="-1e+06,-1e+06" labely="-24" circRot="0" y="20" pointList="-268,20,-200,20,-200,-12" labelx="-16" mainComp="false" labelrot="0" endpinid="DcMotor-140-lPin" valLabRot="0" x="-268" id="Connector-819" objectName="Connector-819" circPos="0,0" enodeid="Circ_eNode-897" itemtype="Connector" valLabely="0" vflip="1"/>
+<item itemtype="Connector" objectName="Connector-819" Show_id="false" valLabely="0" circPos="0,0" endpinid="DcMotor-140-lPin" boardRot="-1000000" vflip="1" id="Connector-819" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-268" labely="-24" pointList="-268,20,-200,20,-200,-12" labelrot="0" startpinid="L293-762-1Y" circRot="0" y="20" labelx="-16" valLabelx="0" enodeid="Circ_eNode-897" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Connector-909: 
+Circuit Id: Connector-909
+<item itemtype="Connector" objectName="Connector-909" Show_id="false" valLabely="0" circPos="0,0" endpinid="L293-762-2A" boardRot="-1000000" vflip="1" id="Connector-909" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-372" labely="-24" pointList="-372,28,-316,28" labelrot="0" startpinid="Node-908-2" circRot="0" y="28" labelx="-16" valLabelx="0" enodeid="enode-910" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Connector-910: 
+Circuit Id: Connector-910
+<item itemtype="Connector" objectName="Connector-910" Show_id="false" valLabely="0" circPos="0,0" endpinid="Oscope-901-Pin1" boardRot="-1000000" vflip="1" id="Connector-910" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-372" labely="-24" pointList="-372,28,-372,104,-612,104,-612,204,-596,204" labelrot="0" startpinid="Node-908-1" circRot="0" y="28" labelx="-16" valLabelx="0" enodeid="enode-910" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Connector-912: 
+Circuit Id: Connector-912
+<item itemtype="Connector" objectName="Connector-912" Show_id="false" valLabely="0" circPos="0,0" endpinid="Arduino Uno-1-PB3" boardRot="-1000000" vflip="1" id="Connector-912" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-364" labely="-24" pointList="-364,20,-364,-160" labelrot="0" startpinid="Node-911-2" circRot="0" y="20" labelx="-16" valLabelx="0" enodeid="enode-913" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Connector-913: 
+Circuit Id: Connector-913
+<item itemtype="Connector" objectName="Connector-913" Show_id="false" valLabely="0" circPos="0,0" endpinid="Oscope-901-Pin0" boardRot="-1000000" vflip="1" id="Connector-913" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-364" labely="-24" pointList="-364,20,-364,132,-596,132,-596,172" labelrot="0" startpinid="Node-911-1" circRot="0" y="20" labelx="-16" valLabelx="0" enodeid="enode-913" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Connector-917: 
+Circuit Id: Connector-917
+<item itemtype="Connector" objectName="Connector-917" Show_id="false" valLabely="0" circPos="0,0" endpinid="Node-923-0" boardRot="-1000000" vflip="1" id="Connector-917" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-380" labely="-24" pointList="-380,-160,-380,116" labelrot="0" startpinid="Arduino Uno-1-PB1" circRot="0" y="-160" labelx="-16" valLabelx="0" enodeid="enode-925" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Connector-916: 
+Circuit Id: Connector-916
+<item itemtype="Connector" objectName="Connector-916" Show_id="false" valLabely="0" circPos="0,0" endpinid="Node-920-0" boardRot="-1000000" vflip="1" id="Connector-916" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-436" labely="-24" pointList="-436,-160,-436,124" labelrot="0" startpinid="Arduino Uno-1-PD3" circRot="0" y="-160" labelx="-16" valLabelx="0" enodeid="enode-922" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Connector-921: 
+Circuit Id: Connector-921
+<item itemtype="Connector" objectName="Connector-921" Show_id="false" valLabely="0" circPos="0,0" endpinid="L293-826-2A" boardRot="-1000000" vflip="1" id="Connector-921" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-436" labely="-24" pointList="-436,124,-316,124" labelrot="0" startpinid="Node-920-2" circRot="0" y="124" labelx="-16" valLabelx="0" enodeid="enode-922" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Connector-922: 
+Circuit Id: Connector-922
+<item itemtype="Connector" objectName="Connector-922" Show_id="false" valLabely="0" circPos="0,0" endpinid="Oscope-901-Pin2" boardRot="-1000000" vflip="1" id="Connector-922" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-436" labely="-24" pointList="-436,124,-632,124,-632,236,-596,236" labelrot="0" startpinid="Node-920-1" circRot="0" y="124" labelx="-16" valLabelx="0" enodeid="enode-922" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Connector-924: 
+Circuit Id: Connector-924
+<item itemtype="Connector" objectName="Connector-924" Show_id="false" valLabely="0" circPos="0,0" endpinid="L293-826-1A" boardRot="-1000000" vflip="1" id="Connector-924" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-380" labely="-24" pointList="-380,116,-316,116" labelrot="0" startpinid="Node-923-2" circRot="0" y="116" labelx="-16" valLabelx="0" enodeid="enode-925" boardPos="-1e+06,-1e+06"/>
+
+Unique  Id: Connector-925: 
+Circuit Id: Connector-925
+<item itemtype="Connector" objectName="Connector-925" Show_id="false" valLabely="0" circPos="0,0" endpinid="Oscope-901-Pin3" boardRot="-1000000" vflip="1" id="Connector-925" valLabRot="0" rotation="0" hflip="1" mainComp="false" x="-380" labely="-24" pointList="-380,116,-640,116,-640,268,-596,268" labelrot="0" startpinid="Node-923-1" circRot="0" y="116" labelx="-16" valLabelx="0" enodeid="enode-925" boardPos="-1e+06,-1e+06"/>
  
 </circuit>
