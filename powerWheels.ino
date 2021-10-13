@@ -103,14 +103,7 @@ void runMotorSignalIteration()
   int maxPwm = 255;
   int throttledPwm = maxPwm * adjustedCurrentThrottlePercent;
 
-  float percentPwm = throttledPwm / 255.0 * 100.0;
-  String message = "Sending ";
-  message += percentPwm;
-  message += "% PWM, ";
-  message += throttledPwm;
-  message += " int PWM (0 - 255)";
-  Serial.println(message);
-
+  
   int forwardPwm = 0;
   int reversePwm = 0;
   if (currentShifterState == ShiftStateReverse)
@@ -121,6 +114,18 @@ void runMotorSignalIteration()
   {
     forwardPwm = throttledPwm;
   }
+
+  float percentPwm = throttledPwm / 255.0 * 100.0;
+  String message = "Sending ";
+  message += percentPwm;
+  message += "% PWM, ";
+  message += throttledPwm;
+  message += " int PWM (0 - 255)";
+  message += "\nforwardPWM: ";
+  message += forwardPwm;
+  message += ", reversePWM: ";
+  message += reversePwm;
+  Serial.println(message);
   
   analogWrite(forwardLeftMotorPWMPin, forwardPwm);
   analogWrite(forwardRightMotorPWMPin, forwardPwm);
