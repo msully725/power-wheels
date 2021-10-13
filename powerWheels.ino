@@ -42,25 +42,17 @@ void loop() {
 
 void runThrottleReadIteration() 
 {
-  String beginning = "Analog In 0 Reading #";
-  String join = ": ";
-  String comma = ", ";
-  String voltEnd = "V";
-  String percentEnd = "%";
-  String message = "";
   float analogVoltageReading = analogIntToVolt(analogRead(throttleInputPin));
   float throttlePercent = calculateThrottlePercent(analogVoltageReading);
 
   currentThrottlePercent = throttlePercent;
   
-  message = beginning 
-    + accumulator 
-    + join 
-    + analogVoltageReading 
-    + voltEnd
-    + comma
-    + throttlePercent * 100
-    + percentEnd;
+  String message = "Analog In 0 Reading #";
+  message += accumulator + ": ";
+  message += analogVoltageReading;
+  message += "V, ";
+  message += throttlePercent;
+  message += "%";
   Serial.println(message);
 }
 
