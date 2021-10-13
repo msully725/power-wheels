@@ -1,19 +1,19 @@
 // throttle constants
-const float minThrottleVolt = 1.0;
-const float maxThrottleVolt = 4.0;
+const float minThrottleVolt = 0.95;
+const float maxThrottleVolt = 3.5;
 const float minStartingThrottlePercent = 0.1;
 
 // shifter states
-const int ShiftStateHigh = 0;
+const int ShiftStateHigh = 2;
 const int ShiftStateLow = 1;
-const int ShiftStateReverse = 2;
+const int ShiftStateReverse = 0;
 
 // current states
 float currentThrottlePercent = 0.0;
 int currentShifterState = 0;
 
 // pin assignments
-int throttleInputPin = A0;
+int throttleInputPin = A1;
 
 int shifter1InputPin = 2;
 int shifter2InputPin = 4;
