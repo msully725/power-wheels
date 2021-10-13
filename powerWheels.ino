@@ -70,6 +70,32 @@ float calculateThrottlePercent(float throttleVoltage)
   return adjustedThrottleVoltage / adjustedMaxThrottleVolt; 
 }
 
+void runShifterReadIteration()
+{
+  int shifterPin1Value = digitalRead(shifter1InputPin);
+  int shifterPin2Value = digitalRead(shifter2InputPin);
+
+  currentShifterState = shifterPin1Value + shifterPin2Value;
+
+  String message = "currentShifterState: " + currentShifterState;
+  message += ", "; 
+
+  switch(currentShifterState)
+  {
+    case ShiftStateReverse:
+      message += "reverse";
+      break;
+    case ShiftStateLow:
+      message += "low";
+      break;
+    case ShiftStateHigh:
+      message += "high";
+      break;
+  }
+
+  Serial.println(message); 
+}
+
 void runMotorSignalIteration()
 {
   float adjustedCurrentThrottlePercent = currentThrottlePercent;
@@ -95,30 +121,4 @@ void runMotorSignalIteration()
 float analogIntToVolt(int analogIn)
 {
   return analogIn * (5.0 / 1023.0);
-}
-
-void runShifterReadIteration()
-{
-  int shifterPin1Value = digitalRead(shifter1InputPin);
-  int shifterPin2Value = digitalRead(shifter2InputPin);
-
-  currentShifterState = shifterPin1Value + shifterPin2Value;
-
-  String message = "currentShifterState: " + currentShifterState;
-  message += ", "; 
-
-  switch(currentShifterState)
-  {
-    case ShiftStateReverse:
-      message += "reverse";
-      break;
-    case ShiftStateLow:
-      message += "low";
-      break;
-    case ShiftStateHigh:
-      message += "high";
-      break;
-  }
-
-  Serial.println(message); 
 }
