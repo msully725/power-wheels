@@ -87,18 +87,11 @@ void runMotorSignalIteration()
   int maxPwm = 255;
   int throttledPwm = maxPwm * adjustedCurrentThrottlePercent;
 
-  String beginning = "Sending ";
   float percentPwm = throttledPwm / 255.0 * 100.0;
-  String percentEnding = "% PWM";
-  String comma = ", ";
-  String intPwmEnding = " int PWM (0 - 255)";
-  String message = "";
-  message = beginning
-    + percentPwm 
-    + percentEnding 
-    + comma 
-    + throttledPwm 
-    + intPwmEnding; 
+  String message = "Sending ";
+  message += percentPwm;
+  message += "% PWM, ";
+  message += throttledPwm + " int PWM (0 - 255)";
   Serial.println(message);
   
   analogWrite(forwardLeftMotorPWMPin, throttledPwm);
