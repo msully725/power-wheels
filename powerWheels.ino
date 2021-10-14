@@ -5,11 +5,11 @@ const int MaxPwm = 255;
 const float MinThrottleVolt = 0.95;
 const float MaxThrottleVolt = 3.5;
 const float MaxThrottlePercent = 1.00;
-const int MinThrottlePwmPercent = 0.1;
+const int StallPrevention_MinThrottlePwmPercent = 0.1;
 const int ThrottleSmoothingBinLength = 10;
 int ThrottleSmoothingBins[ThrottleSmoothingBinLength];
 int throttleSmoothingIndex = 0;
-int minThrottlePwm = 0;
+int stallPreventionMinThrottlePwm = 0;
 
 // shifter constants
 const int ShiftStateHigh = 2;
@@ -39,7 +39,7 @@ void setup() {
   pinMode(Shifter2InputPin, INPUT_PULLUP);
 
   initializeThrottleSmoothingBins();
-  minThrottlePwm = MaxPwm * MinThrottlePwmPercent;
+  stallPreventionMinThrottlePwm = MaxPwm * StallPrevention_MinThrottlePwmPercent;
 }
 
 void loop() {
@@ -110,9 +110,8 @@ void runMotorSignalIteration()
 {
   int throttledPwm = MaxPwm * currentThrottlePercent;
 
-  // Minimum pwm to avoid stalling motors.
-  if (throttledPwm > 0 && throttledPwm < minThrottlePwm)
-    throttledPwm = minThrottlePwm;
+  if (throttledPwm > 0 && throttledPwm < stallPreventionMinThrottlePwm)
+    throttledPwm = stallPreventionMinThrottlePwm;
     
   throttledPwm = calculatePwmWithShifterState(throttledPwm);
   int smoothedThrottledPwm = smoothNextThrottlePwm(throttledPwm);
