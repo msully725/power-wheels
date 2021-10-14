@@ -5,8 +5,8 @@ const int MaxPwm = 255;
 const float MinThrottleVolt = 0.95;
 const float MaxThrottleVolt = 3.5;
 const float MaxThrottlePercent = 1.00;
-const int StallPreventionMinThrottlePwmPercent = 0.1;
-const int ThrottleSmoothingBinLength = 10;
+const float StallPreventionMinThrottlePwmPercent = 0.125;
+const int ThrottleSmoothingBinLength = 5;
 int ThrottleSmoothingBins[ThrottleSmoothingBinLength];
 int throttleSmoothingIndex = 0;
 int stallPreventionMinThrottlePwm = 0;
@@ -40,6 +40,9 @@ void setup() {
 
   initializeThrottleSmoothingBins();
   stallPreventionMinThrottlePwm = MaxPwm * StallPreventionMinThrottlePwmPercent;
+  String message = "stallPreventionMinThrottlePwm: ";
+  message += stallPreventionMinThrottlePwm;
+  Serial.println(message);
 }
 
 void loop() {
@@ -110,14 +113,14 @@ void runMotorSignalIteration()
 {
   int throttledPwm = MaxPwm * currentThrottlePercent;
 
-  if (throttledPwm > 0 && throttledPwm < stallPreventionMinThrottlePwm)
-    throttledPwm = stallPreventionMinThrottlePwm;
-    
   throttledPwm = calculatePwmWithShifterState(throttledPwm);
   int smoothedThrottledPwm = smoothNextThrottlePwm(throttledPwm);
 
   int forwardPwm = smoothedThrottledPwm > 0 ? smoothedThrottledPwm : 0;
   int reversePwm = smoothedThrottledPwm < 0 ? smoothedThrottledPwm * -1 : 0;
+
+  forwardPwm = applyStallPrevention(forwardPwm);
+  reversePwm = applyStallPrevention(reversePwm);
 
   float percentPwm = throttledPwm / 255.0 * 100.0;
   String message = "Sending ";
@@ -131,14 +134,21 @@ void runMotorSignalIteration()
   message += reversePwm;
   Serial.println(message);
 
-  // safety to avoid forward and reverse being active simultaneously.
-  if (forwardPwm > 0 && reversePwm > 0)
+  if (failsForwardReverseSimultaneousSafetyCheck(forwardPwm, reversePwm))
     return;
   
   analogWrite(ForwardLeftMotorPWMPin, forwardPwm);
   analogWrite(ForwardRightMotorPWMPin, forwardPwm);
   analogWrite(ReverseLeftMotorPWMPin, reversePwm);
   analogWrite(ReverseRightMotorPWMPin, reversePwm);
+}
+
+bool failsForwardReverseSimultaneousSafetyCheck(int forwardPwm, int reversePwm)
+{
+    if (forwardPwm > 0 && reversePwm > 0)
+      return true;
+
+     return false;
 }
 
 int calculatePwmWithShifterState(int throttledPwm)
@@ -169,6 +179,14 @@ int smoothNextThrottlePwm(int currentThrottlePwm)
   ThrottleSmoothingBins[throttleSmoothingIndex] = currentThrottlePwm;
 
   return smoothedThrottlePwm;
+}
+
+int applyStallPrevention(int pwm)
+{  
+  if (pwm > 0 && pwm < stallPreventionMinThrottlePwm)
+   return stallPreventionMinThrottlePwm;
+
+   return pwm;
 }
 
 int calculateSmoothedThrottlePwm()
