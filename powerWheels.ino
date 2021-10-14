@@ -1,37 +1,37 @@
 const int loopDelayMs = 25;
 
 // throttle constants
-const float minThrottleVolt = 0.95;
-const float maxThrottleVolt = 3.5;
-const float minStartingThrottlePercent = 0.1;
-const float maxThrottlePercent = 1.00;
+const float MinThrottleVolt = 0.95;
+const float MaxThrottleVolt = 3.5;
+const float MinStartingThrottlePercent = 0.1;
+const float MaxThrottlePercent = 1.00;
 
 // shifter constants
 const int ShiftStateHigh = 2;
 const int ShiftStateLow = 1;
 const int ShiftStateReverse = 0;
-const float lowMaxThrottlePercent = 0.66;
+const float LowMaxThrottlePercent = 0.66;
 
 // current states
-float currentThrottlePercent = 0.0;
-int currentShifterState = 0;
+float CurrentThrottlePercent = 0.0;
+int CurrentShifterState = 0;
 
 // pin assignments
-int throttleInputPin = A5;
+int ThrottleInputPin = A5;
 
-int shifter1InputPin = 2;
-int shifter2InputPin = 4;
+int Shifter1InputPin = 2;
+int Shifter2InputPin = 4;
 
-int forwardLeftMotorPWMPin = 11;
-int forwardRightMotorPWMPin = 9;
-int reverseLeftMotorPWMPin = 10;
-int reverseRightMotorPWMPin = 3;
+int ForwardLeftMotorPWMPin = 11;
+int ForwardRightMotorPWMPin = 9;
+int ReverseLeftMotorPWMPin = 10;
+int ReverseRightMotorPWMPin = 3;
 
 void setup() {
   Serial.begin(9600);
 
-  pinMode(shifter1InputPin, INPUT_PULLUP);
-  pinMode(shifter2InputPin, INPUT_PULLUP);
+  pinMode(Shifter1InputPin, INPUT_PULLUP);
+  pinMode(Shifter2InputPin, INPUT_PULLUP);
 }
 
 void loop() {
@@ -44,10 +44,10 @@ void loop() {
 
 void runThrottleReadIteration() 
 {
-  float analogVoltageReading = analogIntToVolt(analogRead(throttleInputPin));
+  float analogVoltageReading = analogIntToVolt(analogRead(ThrottleInputPin));
   float throttlePercent = calculateThrottlePercent(analogVoltageReading);
 
-  currentThrottlePercent = throttlePercent * maxThrottlePercent;
+  CurrentThrottlePercent = throttlePercent * MaxThrottlePercent;
   
   String message = "Analog Throttle Reading: ";
   message += analogVoltageReading;
@@ -59,30 +59,30 @@ void runThrottleReadIteration()
 
 float calculateThrottlePercent(float throttleVoltage)
 {
-  if (throttleVoltage < minThrottleVolt)
+  if (throttleVoltage < MinThrottleVolt)
     return 0.0;
 
-  if (throttleVoltage > maxThrottleVolt)
+  if (throttleVoltage > MaxThrottleVolt)
     return 1.0;
 
-  float adjustedThrottleVoltage = throttleVoltage - minThrottleVolt;
-  float adjustedMaxThrottleVolt = maxThrottleVolt - minThrottleVolt;
+  float adjustedThrottleVoltage = throttleVoltage - MinThrottleVolt;
+  float adjustedMaxThrottleVolt = MaxThrottleVolt - MinThrottleVolt;
   
   return adjustedThrottleVoltage / adjustedMaxThrottleVolt; 
 }
 
 void runShifterReadIteration()
 {
-  int shifterPin1Value = digitalRead(shifter1InputPin);
-  int shifterPin2Value = digitalRead(shifter2InputPin);
+  int shifterPin1Value = digitalRead(Shifter1InputPin);
+  int shifterPin2Value = digitalRead(Shifter2InputPin);
 
-  currentShifterState = shifterPin1Value + shifterPin2Value;
+  CurrentShifterState = shifterPin1Value + shifterPin2Value;
 
   String message = "Shifter State: ";
-  message += currentShifterState;
+  message += CurrentShifterState;
   message += ", "; 
 
-  switch(currentShifterState)
+  switch(CurrentShifterState)
   {
     case ShiftStateReverse:
       message += "reverse";
@@ -100,9 +100,9 @@ void runShifterReadIteration()
 
 void runMotorSignalIteration()
 {
-  float adjustedCurrentThrottlePercent = currentThrottlePercent;
-  if (currentThrottlePercent > 0.01 && currentThrottlePercent < minStartingThrottlePercent)
-    adjustedCurrentThrottlePercent = minStartingThrottlePercent;
+  float adjustedCurrentThrottlePercent = CurrentThrottlePercent;
+  if (CurrentThrottlePercent > 0.01 && CurrentThrottlePercent < MinStartingThrottlePercent)
+    adjustedCurrentThrottlePercent = MinStartingThrottlePercent;
   
   int maxPwm = 255;
   int throttledPwm = maxPwm * adjustedCurrentThrottlePercent;
@@ -123,23 +123,23 @@ void runMotorSignalIteration()
   message += reversePwm;
   Serial.println(message);
   
-  analogWrite(forwardLeftMotorPWMPin, forwardPwm);
-  analogWrite(forwardRightMotorPWMPin, forwardPwm);
-  analogWrite(reverseLeftMotorPWMPin, reversePwm);
-  analogWrite(reverseRightMotorPWMPin, reversePwm);
+  analogWrite(ForwardLeftMotorPWMPin, forwardPwm);
+  analogWrite(ForwardRightMotorPWMPin, forwardPwm);
+  analogWrite(ReverseLeftMotorPWMPin, reversePwm);
+  analogWrite(ReverseRightMotorPWMPin, reversePwm);
 }
 
 void calculateForwardAndReversePwm(int throttledPwm, int* forwardPwm, int* reversePwm)
 {
   *forwardPwm = 0;
   *reversePwm = 0;
-  if (currentShifterState == ShiftStateReverse)
+  if (CurrentShifterState == ShiftStateReverse)
   {
-    *reversePwm = throttledPwm * lowMaxThrottlePercent;
+    *reversePwm = throttledPwm * LowMaxThrottlePercent;
   }
-  else if (currentShifterState == ShiftStateLow)
+  else if (CurrentShifterState == ShiftStateLow)
   {
-    *forwardPwm = throttledPwm * lowMaxThrottlePercent;
+    *forwardPwm = throttledPwm * LowMaxThrottlePercent;
   } 
   else 
   {
