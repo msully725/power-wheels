@@ -13,7 +13,7 @@ float currentThrottlePercent = 0.0;
 int currentShifterState = 0;
 
 // pin assignments
-int throttleInputPin = A1;
+int throttleInputPin = A5;
 
 int shifter1InputPin = 2;
 int shifter2InputPin = 4;
