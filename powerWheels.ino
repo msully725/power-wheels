@@ -5,6 +5,9 @@ const float MinThrottleVolt = 0.95;
 const float MaxThrottleVolt = 3.5;
 const float MinStartingThrottlePercent = 0.1;
 const float MaxThrottlePercent = 1.00;
+const int ThrottleSmoothingBinLength = 100;
+int ThrottleSmoothingBins[ThrottleSmoothingBinLength];
+int throttleSmoothingIndex = 0;
 
 // shifter constants
 const int ShiftStateHigh = 2;
@@ -13,25 +16,27 @@ const int ShiftStateReverse = 0;
 const float LowMaxThrottlePercent = 0.66;
 
 // current states
-float CurrentThrottlePercent = 0.0;
-int CurrentShifterState = 0;
+float currentThrottlePercent = 0.0;
+int currentShifterState = 0;
 
 // pin assignments
-int ThrottleInputPin = A5;
+const int ThrottleInputPin = A5;
 
-int Shifter1InputPin = 2;
-int Shifter2InputPin = 4;
+const int Shifter1InputPin = 2;
+const int Shifter2InputPin = 4;
 
-int ForwardLeftMotorPWMPin = 11;
-int ForwardRightMotorPWMPin = 9;
-int ReverseLeftMotorPWMPin = 10;
-int ReverseRightMotorPWMPin = 3;
+const int ForwardLeftMotorPWMPin = 11;
+const int ForwardRightMotorPWMPin = 9;
+const int ReverseLeftMotorPWMPin = 10;
+const int ReverseRightMotorPWMPin = 3;
 
 void setup() {
   Serial.begin(9600);
 
   pinMode(Shifter1InputPin, INPUT_PULLUP);
   pinMode(Shifter2InputPin, INPUT_PULLUP);
+
+  initializeThrottleSmoothingBins();
 }
 
 void loop() {
@@ -47,7 +52,7 @@ void runThrottleReadIteration()
   float analogVoltageReading = analogIntToVolt(analogRead(ThrottleInputPin));
   float throttlePercent = calculateThrottlePercent(analogVoltageReading);
 
-  CurrentThrottlePercent = throttlePercent * MaxThrottlePercent;
+  currentThrottlePercent = throttlePercent * MaxThrottlePercent;
   
   String message = "Analog Throttle Reading: ";
   message += analogVoltageReading;
@@ -76,13 +81,13 @@ void runShifterReadIteration()
   int shifterPin1Value = digitalRead(Shifter1InputPin);
   int shifterPin2Value = digitalRead(Shifter2InputPin);
 
-  CurrentShifterState = shifterPin1Value + shifterPin2Value;
+  currentShifterState = shifterPin1Value + shifterPin2Value;
 
   String message = "Shifter State: ";
-  message += CurrentShifterState;
+  message += currentShifterState;
   message += ", "; 
 
-  switch(CurrentShifterState)
+  switch(currentShifterState)
   {
     case ShiftStateReverse:
       message += "reverse";
@@ -100,16 +105,17 @@ void runShifterReadIteration()
 
 void runMotorSignalIteration()
 {
-  float adjustedCurrentThrottlePercent = CurrentThrottlePercent;
-  if (CurrentThrottlePercent > 0.01 && CurrentThrottlePercent < MinStartingThrottlePercent)
+  float adjustedCurrentThrottlePercent = currentThrottlePercent;
+  if (currentThrottlePercent > 0.01 && currentThrottlePercent < MinStartingThrottlePercent)
     adjustedCurrentThrottlePercent = MinStartingThrottlePercent;
   
   int maxPwm = 255;
   int throttledPwm = maxPwm * adjustedCurrentThrottlePercent;
+  int smoothedThrottledPwm = smoothNextThrottlePwm(throttledPwm);
   
   int forwardPwm = 0;
   int reversePwm = 0;
-  calculateForwardAndReversePwm(throttledPwm, &forwardPwm, &reversePwm);
+  calculateForwardAndReversePwm(smoothedThrottledPwm, &forwardPwm, &reversePwm);
 
   float percentPwm = throttledPwm / 255.0 * 100.0;
   String message = "Sending ";
@@ -133,17 +139,48 @@ void calculateForwardAndReversePwm(int throttledPwm, int* forwardPwm, int* rever
 {
   *forwardPwm = 0;
   *reversePwm = 0;
-  if (CurrentShifterState == ShiftStateReverse)
+  if (currentShifterState == ShiftStateReverse)
   {
     *reversePwm = throttledPwm * LowMaxThrottlePercent;
   }
-  else if (CurrentShifterState == ShiftStateLow)
+  else if (currentShifterState == ShiftStateLow)
   {
     *forwardPwm = throttledPwm * LowMaxThrottlePercent;
   } 
   else 
   {
     *forwardPwm = throttledPwm;
+  }
+}
+
+int smoothNextThrottlePwm(int currentThrottlePwm) 
+{
+  int smoothedThrottlePwm = calculateSmoothedThrottlePwm();
+  
+  throttleSmoothingIndex = (throttleSmoothingIndex + 1) % 100;
+  ThrottleSmoothingBins[throttleSmoothingIndex] = currentThrottlePwm;
+
+  return smoothedThrottlePwm;
+}
+
+int calculateSmoothedThrottlePwm()
+{
+  int sum = 0;
+  for (int i = 0; i < ThrottleSmoothingBinLength; i++)
+  {
+    int currentIndex = (throttleSmoothingIndex + i) % ThrottleSmoothingBinLength;
+    sum += ThrottleSmoothingBins[currentIndex];
+  }
+
+  int calculatedSmoothedThrottlePwm = sum / ThrottleSmoothingBinLength;
+  return calculatedSmoothedThrottlePwm;
+}
+
+void initializeThrottleSmoothingBins()
+{
+  for (int i = 0; i < ThrottleSmoothingBinLength; i++)
+  {
+    ThrottleSmoothingBins[i] = 0;
   }
 }
 
