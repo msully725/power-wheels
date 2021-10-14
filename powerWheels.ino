@@ -1,4 +1,4 @@
-const int loopDelayMs = 25
+const int loopDelayMs = 25;
 
 // throttle constants
 const float minThrottleVolt = 0.95;
