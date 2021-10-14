@@ -1,6 +1,7 @@
-const int loopDelayMs = 25;
+const int loopDelayMs = 10000;
+const int maxPwm = 255;
 
-const float breakInThrottlePercent = 30;
+const float breakInThrottlePercent = .3;
 
 const int forwardLeftMotorPWMPin = 11;
 const int forwardRightMotorPWMPin = 9;
@@ -19,14 +20,9 @@ void loop() {
 
 void runMotorBreakinSignalIteration()
 {
-  float adjustedCurrentThrottlePercent = currentThrottlePercent;
-  if (currentThrottlePercent > 0.01 && currentThrottlePercent < minStartingThrottlePercent)
-    adjustedCurrentThrottlePercent = minStartingThrottlePercent;
-  
-  int maxPwm = 255;
   int throttledPwm = maxPwm * breakInThrottlePercent;
   
-  int forwardPwm = 0;
+  int forwardPwm = throttledPwm;
   int reversePwm = 0;
 
   float percentPwm = throttledPwm / 255.0 * 100.0;
@@ -40,6 +36,8 @@ void runMotorBreakinSignalIteration()
   message += ", reversePWM: ";
   message += reversePwm;
   Serial.println(message);
+
+  if (forwardPwm > 0 && reversePwm > 0) return;
   
   analogWrite(forwardLeftMotorPWMPin, forwardPwm);
   analogWrite(forwardRightMotorPWMPin, forwardPwm);
