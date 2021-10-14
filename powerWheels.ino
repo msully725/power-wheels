@@ -1,3 +1,5 @@
+const int loopDelayMs = 25
+
 // throttle constants
 const float minThrottleVolt = 0.95;
 const float maxThrottleVolt = 3.5;
@@ -35,7 +37,7 @@ void loop() {
   runShifterReadIteration();
   runMotorSignalIteration();
     
-  delay(25);
+  delay(loopDelayMs);
 }
 
 void runThrottleReadIteration() 
