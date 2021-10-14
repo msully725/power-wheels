@@ -1,13 +1,15 @@
 const int loopDelayMs = 25;
 
 // throttle constants
+const int MaxPwm = 255;
 const float MinThrottleVolt = 0.95;
 const float MaxThrottleVolt = 3.5;
-const float MinStartingThrottlePercent = 0.1;
 const float MaxThrottlePercent = 1.00;
-const int ThrottleSmoothingBinLength = 100;
+const int MinThrottlePwmPercent = 0.1;
+const int ThrottleSmoothingBinLength = 10;
 int ThrottleSmoothingBins[ThrottleSmoothingBinLength];
 int throttleSmoothingIndex = 0;
+int minThrottlePwm = 0;
 
 // shifter constants
 const int ShiftStateHigh = 2;
@@ -37,6 +39,7 @@ void setup() {
   pinMode(Shifter2InputPin, INPUT_PULLUP);
 
   initializeThrottleSmoothingBins();
+  minThrottlePwm = MaxPwm * MinThrottlePwmPercent;
 }
 
 void loop() {
@@ -105,17 +108,17 @@ void runShifterReadIteration()
 
 void runMotorSignalIteration()
 {
-  float adjustedCurrentThrottlePercent = currentThrottlePercent;
-  if (currentThrottlePercent > 0.01 && currentThrottlePercent < MinStartingThrottlePercent)
-    adjustedCurrentThrottlePercent = MinStartingThrottlePercent;
-  
-  int maxPwm = 255;
-  int throttledPwm = maxPwm * adjustedCurrentThrottlePercent;
+  int throttledPwm = MaxPwm * currentThrottlePercent;
+
+  // Minimum pwm to avoid stalling motors.
+  if (throttledPwm > 0 && throttledPwm < minThrottlePwm)
+    throttledPwm = minThrottlePwm;
+    
+  throttledPwm = calculatePwmWithShifterState(throttledPwm);
   int smoothedThrottledPwm = smoothNextThrottlePwm(throttledPwm);
-  
-  int forwardPwm = 0;
-  int reversePwm = 0;
-  calculateForwardAndReversePwm(smoothedThrottledPwm, &forwardPwm, &reversePwm);
+
+  int forwardPwm = smoothedThrottledPwm > 0 ? smoothedThrottledPwm : 0;
+  int reversePwm = smoothedThrottledPwm < 0 ? smoothedThrottledPwm * -1 : 0;
 
   float percentPwm = throttledPwm / 255.0 * 100.0;
   String message = "Sending ";
@@ -128,6 +131,10 @@ void runMotorSignalIteration()
   message += ", reversePWM: ";
   message += reversePwm;
   Serial.println(message);
+
+  // safety to avoid forward and reverse being active simultaneously.
+  if (forwardPwm > 0 && reversePwm > 0)
+    return;
   
   analogWrite(ForwardLeftMotorPWMPin, forwardPwm);
   analogWrite(ForwardRightMotorPWMPin, forwardPwm);
@@ -135,29 +142,31 @@ void runMotorSignalIteration()
   analogWrite(ReverseRightMotorPWMPin, reversePwm);
 }
 
-void calculateForwardAndReversePwm(int throttledPwm, int* forwardPwm, int* reversePwm)
+int calculatePwmWithShifterState(int throttledPwm)
 {
-  *forwardPwm = 0;
-  *reversePwm = 0;
+  int calculatedPwm = 0;
   if (currentShifterState == ShiftStateReverse)
   {
-    *reversePwm = throttledPwm * LowMaxThrottlePercent;
+    calculatedPwm = -1 * throttledPwm * LowMaxThrottlePercent;
   }
   else if (currentShifterState == ShiftStateLow)
   {
-    *forwardPwm = throttledPwm * LowMaxThrottlePercent;
+    calculatedPwm = throttledPwm * LowMaxThrottlePercent;
   } 
   else 
   {
-    *forwardPwm = throttledPwm;
+    calculatedPwm = throttledPwm;
   }
+
+  return calculatedPwm;
 }
 
 int smoothNextThrottlePwm(int currentThrottlePwm) 
 {
   int smoothedThrottlePwm = calculateSmoothedThrottlePwm();
   
-  throttleSmoothingIndex = (throttleSmoothingIndex + 1) % 100;
+  throttleSmoothingIndex = (throttleSmoothingIndex + 1) % ThrottleSmoothingBinLength;
+  String message = "throttleSmoothingIndex: ";
   ThrottleSmoothingBins[throttleSmoothingIndex] = currentThrottlePwm;
 
   return smoothedThrottlePwm;
