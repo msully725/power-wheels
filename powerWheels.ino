@@ -4,11 +4,13 @@ const int loopDelayMs = 25;
 const float minThrottleVolt = 0.95;
 const float maxThrottleVolt = 3.5;
 const float minStartingThrottlePercent = 0.1;
+const float maxThrottlePercent = 1.00;
 
-// shifter states
+// shifter constants
 const int ShiftStateHigh = 2;
 const int ShiftStateLow = 1;
 const int ShiftStateReverse = 0;
+const float lowMaxThrottlePercent = 0.66;
 
 // current states
 float currentThrottlePercent = 0.0;
@@ -45,7 +47,7 @@ void runThrottleReadIteration()
   float analogVoltageReading = analogIntToVolt(analogRead(throttleInputPin));
   float throttlePercent = calculateThrottlePercent(analogVoltageReading);
 
-  currentThrottlePercent = throttlePercent;
+  currentThrottlePercent = throttlePercent * maxThrottlePercent;
   
   String message = "Analog Throttle Reading: ";
   message += analogVoltageReading;
@@ -104,18 +106,10 @@ void runMotorSignalIteration()
   
   int maxPwm = 255;
   int throttledPwm = maxPwm * adjustedCurrentThrottlePercent;
-
   
   int forwardPwm = 0;
   int reversePwm = 0;
-  if (currentShifterState == ShiftStateReverse)
-  {
-    reversePwm = throttledPwm;
-  }
-  else
-  {
-    forwardPwm = throttledPwm;
-  }
+  calculateForwardAndReversePwm(throttledPwm, &forwardPwm, &reversePwm);
 
   float percentPwm = throttledPwm / 255.0 * 100.0;
   String message = "Sending ";
@@ -133,6 +127,24 @@ void runMotorSignalIteration()
   analogWrite(forwardRightMotorPWMPin, forwardPwm);
   analogWrite(reverseLeftMotorPWMPin, reversePwm);
   analogWrite(reverseRightMotorPWMPin, reversePwm);
+}
+
+void calculateForwardAndReversePwm(int throttledPwm, int* forwardPwm, int* reversePwm)
+{
+  *forwardPwm = 0;
+  *reversePwm = 0;
+  if (currentShifterState == ShiftStateReverse)
+  {
+    *reversePwm = throttledPwm * lowMaxThrottlePercent;
+  }
+  else if (currentShifterState == ShiftStateLow)
+  {
+    *forwardPwm = throttledPwm * lowMaxThrottlePercent;
+  } 
+  else 
+  {
+    *forwardPwm = throttledPwm;
+  }
 }
 
 float analogIntToVolt(int analogIn)
