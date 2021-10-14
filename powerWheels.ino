@@ -5,7 +5,7 @@ const int MaxPwm = 255;
 const float MinThrottleVolt = 0.95;
 const float MaxThrottleVolt = 3.5;
 const float MaxThrottlePercent = 1.00;
-const int StallPrevention_MinThrottlePwmPercent = 0.1;
+const int StallPreventionMinThrottlePwmPercent = 0.1;
 const int ThrottleSmoothingBinLength = 10;
 int ThrottleSmoothingBins[ThrottleSmoothingBinLength];
 int throttleSmoothingIndex = 0;
@@ -39,7 +39,7 @@ void setup() {
   pinMode(Shifter2InputPin, INPUT_PULLUP);
 
   initializeThrottleSmoothingBins();
-  stallPreventionMinThrottlePwm = MaxPwm * StallPrevention_MinThrottlePwmPercent;
+  stallPreventionMinThrottlePwm = MaxPwm * StallPreventionMinThrottlePwmPercent;
 }
 
 void loop() {
