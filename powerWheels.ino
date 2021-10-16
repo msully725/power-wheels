@@ -1,3 +1,5 @@
+#include "TimerOne.h"
+
 const int loopDelayMs = 25;
 
 // throttle constants
@@ -27,9 +29,9 @@ const int ThrottleInputPin = A5;
 const int Shifter1InputPin = 2;
 const int Shifter2InputPin = 4;
 
-const int ForwardLeftMotorPWMPin = 11;
+const int ForwardLeftMotorPWMPin = 10;
 const int ForwardRightMotorPWMPin = 9;
-const int ReverseLeftMotorPWMPin = 10;
+const int ReverseLeftMotorPWMPin = 11;
 const int ReverseRightMotorPWMPin = 3;
 
 void setup() {
@@ -38,11 +40,21 @@ void setup() {
   pinMode(Shifter1InputPin, INPUT_PULLUP);
   pinMode(Shifter2InputPin, INPUT_PULLUP);
 
+  setupHighFrequencyPWM();
+  
   initializeThrottleSmoothingBins();
   stallPreventionMinThrottlePwm = MaxPwm * StallPreventionMinThrottlePwmPercent;
   String message = "stallPreventionMinThrottlePwm: ";
   message += stallPreventionMinThrottlePwm;
   Serial.println(message);
+}
+
+void setupHighFrequencyPWM()
+{
+  pinMode(ForwardLeftMotorPWMPin, OUTPUT);
+  pinMode(ForwardRightMotorPWMPin, OUTPUT);
+
+  Timer1.initialize(100);
 }
 
 void loop() {
@@ -136,9 +148,10 @@ void runMotorSignalIteration()
 
   if (failsForwardReverseSimultaneousSafetyCheck(forwardPwm, reversePwm))
     return;
-  
-  analogWrite(ForwardLeftMotorPWMPin, forwardPwm);
-  analogWrite(ForwardRightMotorPWMPin, forwardPwm);
+
+  int forwardPwmScaledForTimer1 = forwardPwm * 4;
+  Timer1.pwm(ForwardLeftMotorPWMPin, forwardPwmScaledForTimer1);
+  Timer1.pwm(ForwardRightMotorPWMPin, forwardPwmScaledForTimer1);
   analogWrite(ReverseLeftMotorPWMPin, reversePwm);
   analogWrite(ReverseRightMotorPWMPin, reversePwm);
 }
