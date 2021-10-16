@@ -11,7 +11,7 @@ const int MaxPwm = 255;
 const float MinThrottleVolt = 0.95;
 const float MaxThrottleVolt = 3.5;
 const float MaxThrottlePercent = 1.00;
-const float StallPreventionMinThrottlePwmPercent = 0.125;
+const float StallPreventionMinThrottlePwmPercent = 0.15;
 const int ThrottleSmoothingBinLength = 5;
 int ThrottleSmoothingBins[ThrottleSmoothingBinLength];
 int throttleSmoothingIndex = 0;
