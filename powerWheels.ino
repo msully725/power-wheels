@@ -2,6 +2,10 @@
 
 const int loopDelayMs = 25;
 
+// Timer1 constants
+const int AnalogWriteToTimer1PwmFactor = 4;
+const int PwmFrequencyInMicroseconds = 100; // 100uS = 10kHz
+
 // throttle constants
 const int MaxPwm = 255;
 const float MinThrottleVolt = 0.95;
@@ -54,7 +58,10 @@ void setupHighFrequencyPWM()
   pinMode(ForwardLeftMotorPWMPin, OUTPUT);
   pinMode(ForwardRightMotorPWMPin, OUTPUT);
 
-  Timer1.initialize(100);
+  Timer1.initialize(PwmFrequencyInMicroseconds);
+  String message = "PwmFrequencyInMicroseconds: ";
+  message += PwmFrequencyInMicroseconds;
+  Serial.println(message);
 }
 
 void loop() {
@@ -149,7 +156,7 @@ void runMotorSignalIteration()
   if (failsForwardReverseSimultaneousSafetyCheck(forwardPwm, reversePwm))
     return;
 
-  int forwardPwmScaledForTimer1 = forwardPwm * 4;
+  int forwardPwmScaledForTimer1 = forwardPwm * AnalogWriteToTimer1PwmFactor;
   Timer1.pwm(ForwardLeftMotorPWMPin, forwardPwmScaledForTimer1);
   Timer1.pwm(ForwardRightMotorPWMPin, forwardPwmScaledForTimer1);
   analogWrite(ReverseLeftMotorPWMPin, reversePwm);
