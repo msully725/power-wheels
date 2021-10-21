@@ -12,10 +12,11 @@ const float MinThrottleVolt = 0.95;
 const float MaxThrottleVolt = 3.5;
 const float MaxThrottlePercent = 1.00;
 const float StallPreventionMinThrottlePwmPercent = 0.15;
+
+// throttle smoothing constants
 const int ThrottleSmoothingBinLength = 5;
 int ThrottleSmoothingBins[ThrottleSmoothingBinLength];
 int throttleSmoothingIndex = 0;
-int stallPreventionMinThrottlePwm = 0;
 
 // shifter constants
 const int ShiftStateHigh = 2;
@@ -26,6 +27,7 @@ const float LowMaxThrottlePercent = 0.66;
 // current states
 float currentThrottlePercent = 0.0;
 int currentShifterState = 0;
+int stallPreventionMinThrottlePwm = 0;
 
 // pin assignments
 const int ThrottleInputPin = A5;
@@ -35,8 +37,7 @@ const int Shifter2InputPin = 4;
 
 const int ForwardLeftMotorPWMPin = 10;
 const int ForwardRightMotorPWMPin = 9;
-const int ReverseLeftMotorPWMPin = 11;
-const int ReverseRightMotorPWMPin = 3;
+const int ReverseSharedMotorPWMPin = 11;
 
 void setup() {
   Serial.begin(9600);
@@ -59,9 +60,16 @@ void setupHighFrequencyPWM()
   pinMode(ForwardRightMotorPWMPin, OUTPUT);
 
   Timer1.initialize(PwmFrequencyInMicroseconds);
-  String message = "PwmFrequencyInMicroseconds: ";
+  String message = "Timer1 PwmFrequencyInMicroseconds: ";
   message += PwmFrequencyInMicroseconds;
   Serial.println(message);
+
+  pinMode(ReverseSharedMotorPWMPin, OUTPUT);
+  setupTimer2For10kHzPWM();
+}
+
+void setupTimer2For10kHzPWM() {
+  TCCR2B = TCCR2B & 0b11111000 | 0x02;
 }
 
 void loop() {
@@ -159,8 +167,8 @@ void runMotorSignalIteration()
   int forwardPwmScaledForTimer1 = forwardPwm * AnalogWriteToTimer1PwmFactor;
   Timer1.pwm(ForwardLeftMotorPWMPin, forwardPwmScaledForTimer1);
   Timer1.pwm(ForwardRightMotorPWMPin, forwardPwmScaledForTimer1);
-  analogWrite(ReverseLeftMotorPWMPin, reversePwm);
-  analogWrite(ReverseRightMotorPWMPin, reversePwm);
+  
+  analogWrite(ReverseSharedMotorPWMPin, reversePwm);
 }
 
 bool failsForwardReverseSimultaneousSafetyCheck(int forwardPwm, int reversePwm)
@@ -190,6 +198,14 @@ int calculatePwmWithShifterState(int throttledPwm)
   return calculatedPwm;
 }
 
+int applyStallPrevention(int pwm)
+{  
+  if (pwm > 0 && pwm < stallPreventionMinThrottlePwm)
+   return stallPreventionMinThrottlePwm;
+
+   return pwm;
+}
+
 int smoothNextThrottlePwm(int currentThrottlePwm) 
 {
   int smoothedThrottlePwm = calculateSmoothedThrottlePwm();
@@ -199,14 +215,6 @@ int smoothNextThrottlePwm(int currentThrottlePwm)
   ThrottleSmoothingBins[throttleSmoothingIndex] = currentThrottlePwm;
 
   return smoothedThrottlePwm;
-}
-
-int applyStallPrevention(int pwm)
-{  
-  if (pwm > 0 && pwm < stallPreventionMinThrottlePwm)
-   return stallPreventionMinThrottlePwm;
-
-   return pwm;
 }
 
 int calculateSmoothedThrottlePwm()
