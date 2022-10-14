@@ -30,7 +30,7 @@ int currentShifterState = 0;
 int stallPreventionMinThrottlePwm = 0;
 
 // pin assignments
-const int ThrottleInputPin = A5;
+const int ThrottleInputPin = A0;
 
 const int Shifter1InputPin = 2;
 const int Shifter2InputPin = 4;
