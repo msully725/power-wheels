@@ -1,3 +1,5 @@
+#include <TimerOne.h>
+
 #include "TimerOne.h"
 
 const int loopDelayMs = 25;
